@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/bin/bash
 # ==============================================================================
 # Script: collect.sh
 # Description:
@@ -33,18 +33,34 @@ categories=("rtx3060" "rtx3070" "rtx3080" "rtx3090" "rx6700")
 get_sales () {
 	local category="$1"  # Get the first parameter
 	local url="http://localhost:5000/$category"
-	local response=$(curl -s $url)
-	echo $response
-	#output_file="data/raw/sales_${timestamp}.csv"
+	local input_file_path="../data/raw/sales_data.csv"
+
+	local response=$(curl -s "$url")
+	local timestamp_i=$(timestamps "ISO 8601")
+	local new_row="$timestamp_i,$category,$response"
+	input_file=$(<"$input_file_path")
+
+	# Create output filename with basic timestamp
+	local timestamp_b=$(timestamps)
+    	local output_file_path="../data/raw/sales_${timestamp_b}.csv"
+
+	cp "$input_file_path" "$output_file_path"
+	echo "$new_row" >> "$output_file_path"
+
 }
 
-log() {
-	timestamp=$(date +"%Y%m%d_%H%M")
-	echo $timestamp 
+timestamps() {
+	local format="$1"
+	if [ "$format" = "ISO 8601" ]
+	then
+	timestamp_ISO_8601=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+	echo $timestamp_ISO_8601
+	else
+	timestamp_basic=$(date -u +"%Y%m%d_%H%M")
+	echo $timestamp_basic
+	fi
 }
 
 for gc in "${categories[@]}"; do
     get_sales "$gc"
 done
-
-log
