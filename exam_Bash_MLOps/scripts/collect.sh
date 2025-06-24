@@ -30,6 +30,19 @@
 
 categories=("rtx3060" "rtx3070" "rtx3080" "rtx3090" "rx6700")
 
+log_request () {
+	local timestamp="$1"  # Get the first parameter: timestamp
+	local category="$2"  # Get the second parameter: product category
+	local response="$3"  # Get the third parameter: API response
+	local request="$4" # Get the fourth parameter: cURL request
+
+	# Create log entry
+	local log_entry="[$timestamp],Category: $category,Response: $response, Request: $request"
+
+	# Append log entry to the log file
+	echo "$log_entry" >> "../logs/collect.logs"
+}
+
 get_and_save_sales () {
 	local category="$1"  # Get the first parameter: product category
 	local output_file_path="$2"  # Get the second parameter: output file path
@@ -37,7 +50,9 @@ get_and_save_sales () {
 
 	local url="http://localhost:5000/$category"
 	local response=$(curl -s "$url")
+	log_request "$timestamp_i" "$category" "$response" "$url"
 
+	# Save sales data to the output file
 	local new_row="$timestamp_i,$category,$response"
 	echo "$new_row" >> "$output_file_path"
 }
