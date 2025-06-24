@@ -39,7 +39,7 @@ log_request () {
 	local log_file="../logs/collect.logs"
 	local log_header="timestamp,category,response,request"
 
-	# If file doesn't exist or is empty, write header
+	# If file doesn't exist or is empty, add table's header
     if [[ ! -s "$log_file" ]]; then
         echo "$log_header" > "$log_file"
     fi
