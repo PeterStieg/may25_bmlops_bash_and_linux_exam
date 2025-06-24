@@ -38,11 +38,11 @@ log_request () {
 
 	local log_file="../logs/collect.logs"
 	local log_header="timestamp,category,response,request"
-	local first_line=$(head -n1 "$log_file")
 
-	if [[ "$first_line" != "$log_header" ]]; then
-		echo "$log_header" > "$log_file"
-	fi
+	# If file doesn't exist or is empty, write header
+    if [[ ! -s "$log_file" ]]; then
+        echo "$log_header" > "$log_file"
+    fi
 
 	# Create log entry
 	local log_entry="$timestamp,$category,$response,$request"
