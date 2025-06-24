@@ -84,8 +84,13 @@ input_file_path="../data/raw/sales_data.csv"
 timestamp_b=$(timestamps)
 output_file_path="../data/raw/sales_${timestamp_b}.csv"
 
+# Copy input file to output file
 cp "$input_file_path" "$output_file_path"
 
+# Add a newline if the file doesn't end with one
+if [[$(tail -c1 "$output_file_path" | wc -l) -eq 0 ]]; then
+    echo >> "$output_file_path"
+fi
 
 for gc in "${categories[@]}"; do # gc as in "graphics card"
     get_and_save_sales "$gc" "$output_file_path"
