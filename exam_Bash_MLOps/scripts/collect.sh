@@ -51,7 +51,7 @@ get_sales () {
 
 timestamps() {
 	local format="$1"
-	if [ "$format" = "ISO 8601" ]
+	if [[ "$format" = "ISO 8601" ]]
 	then
 	timestamp_ISO_8601=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 	echo $timestamp_ISO_8601
