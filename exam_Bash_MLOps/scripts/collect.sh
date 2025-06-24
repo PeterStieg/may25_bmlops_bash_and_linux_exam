@@ -36,11 +36,19 @@ log_request () {
 	local response="$3"  # Get the third parameter: API response
 	local request="$4" # Get the fourth parameter: cURL request
 
+	local log_file="../logs/collect.logs"
+	local log_header="timestamp,category,response,request"
+	local first_line=$(head -n1 "$log_file")
+
+	if [[ "$first_line" != "$log_header" ]]; then
+		echo "$log_header" > "$log_file"
+	fi
+
 	# Create log entry
-	local log_entry="[$timestamp],Category: $category,Response: $response, Request: $request"
+	local log_entry="$timestamp,$category,$response,$request"
 
 	# Append log entry to the log file
-	echo "$log_entry" >> "../logs/collect.logs"
+	echo "$log_entry" >> "$log_file"
 }
 
 get_and_save_sales () {
