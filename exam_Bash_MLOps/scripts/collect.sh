@@ -31,14 +31,14 @@
 categories=("rtx3060" "rtx3070" "rtx3080" "rtx3090" "rx6700")
 
 get_and_save_sales () {
-	local url="http://localhost:5000/$category"
 	local category="$1"  # Get the first parameter: product category
 	local output_file_path="$2"  # Get the second parameter: output file path
 	local timestamp_i=$(timestamps "ISO 8601")
 
+	local url="http://localhost:5000/$category"
 	local response=$(curl -s "$url")
-	local new_row="$timestamp_i,$category,$response"
 
+	local new_row="$timestamp_i,$category,$response"
 	echo "$new_row" >> "$output_file_path"
 }
 
