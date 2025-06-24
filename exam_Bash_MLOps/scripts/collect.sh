@@ -30,12 +30,13 @@
 
 categories=("rtx3060" "rtx3070" "rtx3080" "rtx3090" "rx6700")
 
-get_sales () {
-	local category="$1"  # Get the first parameter
+get_and_save_sales () {
 	local url="http://localhost:5000/$category"
+	local category="$1"  # Get the first parameter: product category
+	local output_file_path="$2"  # Get the second parameter: output file path
+	local timestamp_i=$(timestamps "ISO 8601")
 
 	local response=$(curl -s "$url")
-	local timestamp_i=$(timestamps "ISO 8601")
 	local new_row="$timestamp_i,$category,$response"
 
 	echo "$new_row" >> "$output_file_path"
@@ -63,6 +64,6 @@ output_file_path="../data/raw/sales_${timestamp_b}.csv"
 cp "$input_file_path" "$output_file_path"
 
 
-for gc in "${categories[@]}"; do
-    get_sales "$gc"
+for gc in "${categories[@]}"; do # gc as in "graphics card"
+    get_and_save_sales "$gc" "$output_file_path"
 done
