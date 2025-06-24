@@ -88,7 +88,7 @@ output_file_path="../data/raw/sales_${timestamp_b}.csv"
 cp "$input_file_path" "$output_file_path"
 
 # Add a newline if the file doesn't end with one
-if [[$(tail -c1 "$output_file_path" | wc -l) -eq 0 ]]; then
+if [[ $(tail -c1 "$output_file_path" | wc -l) -eq 0 ]]; then
     echo >> "$output_file_path"
 fi
 
