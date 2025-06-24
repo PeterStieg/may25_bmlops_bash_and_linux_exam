@@ -1,0 +1,6 @@
+timestamp,category,response,request
+2025-06-24T19:34:22Z,rtx3060,,http://localhost:5000/rtx3060
+2025-06-24T19:34:22Z,rtx3070,,http://localhost:5000/rtx3070
+2025-06-24T19:34:22Z,rtx3080,,http://localhost:5000/rtx3080
+2025-06-24T19:34:22Z,rtx3090,,http://localhost:5000/rtx3090
+2025-06-24T19:34:22Z,rx6700,,http://localhost:5000/rx6700
