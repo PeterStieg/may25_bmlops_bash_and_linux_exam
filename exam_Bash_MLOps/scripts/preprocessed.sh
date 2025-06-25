@@ -9,4 +9,4 @@
 cd .. && source venv/bin/activate
 
 # Run the preprocessing script
-cd ../src/ && python3 preprocessed.py
+cd ../src && python3 preprocessed.py
