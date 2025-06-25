@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 import xgboost as xgb
 
-from datetime import datetime
+from datetime import datetime, timezone
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -175,7 +175,7 @@ def main():
     Main function that orchestrates tasks in the correct order.
     """
 
-    timestamp_basic = datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M")
+    timestamp_basic = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
 
     try:
         # TASK 1: Get latest processed CSV file
