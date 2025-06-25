@@ -4,3 +4,4 @@
 # in the model/ directory. The script also logs all execution details
 # in the file logs/train.logs.
 # -----------------------------------------------------------------------------
+python3 ../src/train.py

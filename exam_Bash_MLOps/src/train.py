@@ -53,6 +53,7 @@ def load_and_prepare_data(file_path):
     df["year"] = df["timestamp"].dt.year
     df["month"] = df["timestamp"].dt.month
     df["day_of_year"] = df["timestamp"].dt.dayofyear
+    df.drop(columns=["timestamp"], inplace=True)
 
     # Encode graphics card model names
     label_encoder = LabelEncoder()
@@ -186,7 +187,7 @@ def main():
         # TASK 2 & 3: Train model
 
         model, metrics = train_model(X, y)
-        save_model(model, label_encoder, metrics)
+        save_model(model, label_encoder, metrics, timestamp_basic)
 
     except Exception as e:
         print(f"Training pipeline failed: {e}")
