@@ -56,6 +56,7 @@ df["month"] = df["timestamp"].dt.month
 df["day_of_year"] = df["timestamp"].dt.dayofyear
 df.drop(columns=["timestamp"], inplace=True)
 
+df["model"] = df["model"].str.replace(r"rtx|rx", "", regex=True).astype(int)
 
 # Get all columns except 'model'
 numeric_columns = df.select_dtypes(include=["float64", "int64"]).columns
