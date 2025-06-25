@@ -9,4 +9,4 @@
 source venv/bin/activate
 
 # Run the preprocessing script
-python3 src/preprocessed.py
+cd src && python3 preprocessed.py
