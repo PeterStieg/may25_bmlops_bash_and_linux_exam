@@ -11,22 +11,22 @@ PYTHON = $(VENV)/bin/python
 UV = $(VENV)/bin/uv
 
 setup:
-	@echo "\n### 1. Setting up development environment ### \n"
+	@echo "### 1. Setting up development environment ###"
 	cd scripts && bash setup.sh
 
 # Install/update dependencies
 install:
-	@echo "\n### 2. Installing dependencies from requirements.txt ### \n"
+	@echo "### 2. Installing dependencies from requirements.txt ###"
 	source $(VENV)/bin/activate && uv pip install -r requirements.txt
 
 # Update requirements.txt from pyproject.toml
 update-deps:
-	@echo "\n### 3. Updating requirements.txt from pyproject.toml ### \n"
+	@echo "### 3. Updating requirements.txt from pyproject.toml ###"
 	source $(VENV)/bin/activate && uv pip compile pyproject.toml --output-file requirements.txt
 
 # Start API
 api-start:
-	@echo "\n### 4. Starting API server ### \n"
+	@echo "### 4. Starting API server ###"
 	@cd .. && ./api >> exam_Bash_MLOps/logs/api.log 2>&1 & echo $$! > api.pid
 
 # Pipeline steps
@@ -46,20 +46,20 @@ train:
 pipeline: pipeline-start collect preprocess train tests pipeline-end
 
 pipeline-start:
-	@echo "\n### 5. Pipeline started ###"
+	@echo "### 5. Pipeline started ###"
 
 pipeline-end:
-	@echo "### 5. Pipeline completed ### \n"
+	@echo "### 5. Pipeline completed ###"
 
 tests:
-	@echo "\n### 6. Running tests ### \n"
+	@echo "### 6. Running tests ###"
 	source $(VENV)/bin/activate && pytest tests/test_collect.py && \
 	pytest tests/test_preprocessed.py && \
 	pytest tests/test_model.py
 
 # Stop API
 api-stop:
-	@echo "\n### 7. Stopping API server ### \n"
+	@echo "### 7. Stopping API server ###"
 	@if [ -f api.pid ]; then \
 	kill `cat api.pid` && rm api.pid; \
 	echo "API stopped successfully"; \
@@ -67,7 +67,7 @@ api-stop:
 
 # Clean up environment
 clean:
-	@echo "\n### 8. Cleaning up ### \n"
+	@echo "### 8. Cleaning up ###"
 	rm -rf $(VENV)
 	rm -rf __pycache__
 	rm -rf *.pyc
