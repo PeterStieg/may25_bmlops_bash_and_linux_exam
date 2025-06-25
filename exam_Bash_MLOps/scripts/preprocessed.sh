@@ -9,4 +9,9 @@
 cd .. && source venv/bin/activate
 
 # Run the preprocessing script
-cd ../src && python3 preprocessed.py
+#cd ../src && python3 preprocessed.py
+
+echo "Script started in: $(pwd)"
+echo "Script location: $(dirname "$0")"
+echo "Available files here:"
+ls -la
