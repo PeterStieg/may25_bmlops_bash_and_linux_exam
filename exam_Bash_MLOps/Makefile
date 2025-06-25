@@ -1,5 +1,8 @@
 # Makefile for MLOps pipeline
 
+# Force make to use bash instead of sh
+SHELL := /bin/bash
+
 .PHONY: setup install update-deps collect preprocess train tests clean
 
 # Virtual environment activation
