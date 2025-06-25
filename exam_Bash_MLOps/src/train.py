@@ -86,7 +86,7 @@ def display_and_save_metrics(metrics, model_path, timestamp_basic):
     """
 
     log_file_path = "../logs/train.logs"
-    log_file_header = "timestamp;model_path;RMSE;MAE;R²\n"
+    log_file_header = "timestamp;model_path;rmse;mae;r2\n"
 
     # Check if the log file exist, if not create it and write header
     # Check if the log file is empty, if so, write the header
@@ -140,16 +140,15 @@ def save_model(model, label_encoder, metrics, timestamp_basic):
 
     os.makedirs("model", exist_ok=True)
 
-    model_path = "model/model.pkl"
     standard_model_exists = os.path.exists(model_path)
 
     if not standard_model_exists:
         # Save the model as 'model.pkl'
-        model_path = "model/model.pkl"
+        model_path = "../model/model.pkl"
     else:
-        model_path = f"model/model_{timestamp_basic}.pkl"
+        model_path = f"../model/model_{timestamp_basic}.pkl"
 
-    encoder_path = "model/label_encoder.pkl"
+    encoder_path = "../model/label_encoder.pkl"
 
     # Save model and encoder
     with open(model_path, "wb") as f:
