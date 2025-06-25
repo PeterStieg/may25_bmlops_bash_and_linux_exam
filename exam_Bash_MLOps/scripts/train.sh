@@ -8,7 +8,7 @@
 
 
 # Activate the virtual environment
-source venv/bin/activate
+cd .. && source venv/bin/activate
 
 # Run the training script
 python ../src/train.py
