@@ -56,6 +56,16 @@ df["month"] = df["timestamp"].dt.month
 df["day_of_year"] = df["timestamp"].dt.dayofyear
 df.drop(columns=["timestamp"], inplace=True)
 
+
+# Get all columns except 'model'
+numeric_columns = df.select_dtypes(include=["float64", "int64"]).columns
+columns_to_convert = [col for col in numeric_columns if col != "model"]
+
+# Convert to integer
+for col in columns_to_convert:
+    df[col] = df[col].astype(int)
+
+
 # Create folder for processed data if it doesn't exist
 processed_sales_data_path = "../data/processed/"
 os.makedirs(processed_sales_data_path, exist_ok=True)
