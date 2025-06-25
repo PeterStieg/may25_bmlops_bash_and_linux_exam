@@ -8,7 +8,7 @@
 
 
 # Activate the virtual environment
-cd .. && source venv/bin/activate
+source venv/bin/activate
 
-# Run the training script
-cd ../src && python3 train.py
+# Run the preprocessing script
+python3 src/train.py
