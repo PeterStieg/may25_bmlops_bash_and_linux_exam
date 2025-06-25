@@ -49,6 +49,13 @@ df = pd.concat(dataframes, ignore_index=True)
 # Remove duplicates based on subset of columns
 df.drop_duplicates(subset=["timestamp", "model", "sales"], inplace=True)
 
+# Convert timestamp to datetime and create time features
+df["timestamp"] = pd.to_datetime(df["timestamp"])
+df["year"] = df["timestamp"].dt.year
+df["month"] = df["timestamp"].dt.month
+df["day_of_year"] = df["timestamp"].dt.dayofyear
+df.drop(columns=["timestamp"], inplace=True)
+
 # Create folder for processed data if it doesn't exist
 processed_sales_data_path = "../data/processed/"
 os.makedirs(processed_sales_data_path, exist_ok=True)

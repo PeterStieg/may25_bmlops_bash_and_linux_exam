@@ -48,13 +48,6 @@ def load_and_prepare_data(file_path):
     # Load the CSV data
     df = pd.read_csv(file_path)
 
-    # Convert timestamp to datetime and create time features
-    df["timestamp"] = pd.to_datetime(df["timestamp"])
-    df["year"] = df["timestamp"].dt.year
-    df["month"] = df["timestamp"].dt.month
-    df["day_of_year"] = df["timestamp"].dt.dayofyear
-    df.drop(columns=["timestamp"], inplace=True)
-
     # Encode graphics card model names
     label_encoder = LabelEncoder()
     df["model_encoded"] = label_encoder.fit_transform(df["model"])
