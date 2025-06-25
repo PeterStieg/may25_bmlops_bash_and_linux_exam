@@ -11,4 +11,4 @@
 cd .. && source venv/bin/activate
 
 # Run the training script
-python ../src/train.py
+cd ../src/ && python3 train.py
