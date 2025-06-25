@@ -37,7 +37,7 @@ log_request () {
 	local request="$4" # Get the fourth parameter: cURL request
 
 	local log_file="../logs/collect.logs"
-	local log_header="timestamp,category,response,request"
+	local log_header="timestamp;category;response;request"
 
 	# If file doesn't exist or is empty, add table's header
     if [[ ! -s "$log_file" ]]; then
@@ -45,7 +45,7 @@ log_request () {
     fi
 
 	# Create log entry
-	local log_entry="$timestamp,$category,$response,$request"
+	local log_entry="$timestamp;$category;$response;$request"
 
 	# Append log entry to the log file
 	echo "$log_entry" >> "$log_file"

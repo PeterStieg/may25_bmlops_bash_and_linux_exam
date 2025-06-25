@@ -61,7 +61,7 @@ df.to_csv(f_path, index=False)
 
 # Log the preprocessing steps
 log_file_path = "../logs/preprocessed.logs"
-log_file_header = "timestamp,nr_of_files,nr_of_rows,processed_files\n"
+log_file_header = "timestamp;nr_of_files;nr_of_rows;processed_files\n"
 
 # Check if the log file exist, if not create it and write header
 # Check if the log file is empty, if so, write the header
