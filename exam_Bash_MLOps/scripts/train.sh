@@ -7,7 +7,7 @@
 # -----------------------------------------------------------------------------
 
 # Activate the virtual environment
-source venv/bin/activate
+source ../venv/bin/activate
 
 # Run the preprocessing script
 python3 ../src/train.py
