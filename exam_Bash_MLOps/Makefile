@@ -32,15 +32,15 @@ api-start:
 # Pipeline steps
 collect:
 	cd scripts && bash collect.sh
-	@echo "\t5.1 Data collection completed"
+	@echo "5.1 Data collection completed"
 
 preprocess:
 	cd scripts && bash preprocessed.sh
-	@echo "\t5.2 Data preprocessing completed"
+	@echo "5.2 Data preprocessing completed"
 
 train:
 	cd scripts && bash train.sh
-	@echo "\t5.3 Model training completed"
+	@echo "5.3 Model training completed"
 
 # Pipeline
 pipeline: pipeline-start collect preprocess train tests pipeline-end
