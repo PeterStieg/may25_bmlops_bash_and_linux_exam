@@ -140,12 +140,10 @@ def save_model(model, label_encoder, metrics, timestamp_basic):
 
     os.makedirs("model", exist_ok=True)
 
+    model_path = "../model/model.pkl"
     standard_model_exists = os.path.exists(model_path)
 
-    if not standard_model_exists:
-        # Save the model as 'model.pkl'
-        model_path = "../model/model.pkl"
-    else:
+    if standard_model_exists:
         model_path = f"../model/model_{timestamp_basic}.pkl"
 
     encoder_path = "../model/label_encoder.pkl"
