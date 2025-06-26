@@ -1,0 +1,2 @@
+timestamp;model_path;rmse;mae;r2
+20250626_0010;../model/model.pkl;6.039588;5.117500;-0.010653

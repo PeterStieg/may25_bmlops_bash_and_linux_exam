@@ -1,0 +1,22 @@
+127.0.0.1 - - [26/Jun/2025 00:10:41] "GET /rtx3060 HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2025 00:10:41] "GET /rtx3070 HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2025 00:10:41] "GET /rtx3080 HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2025 00:10:41] "GET /rtx3090 HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2025 00:10:41] "GET /rx6700 HTTP/1.1" 200 -
+ * Serving Flask app 'exam_bash' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+Traceback (most recent call last):
+  File "api.py", line 48, in <module>
+  File "flask/app.py", line 922, in run
+  File "werkzeug/serving.py", line 1008, in run_simple
+  File "werkzeug/serving.py", line 948, in inner
+  File "werkzeug/serving.py", line 780, in make_server
+  File "werkzeug/serving.py", line 686, in __init__
+  File "socketserver.py", line 452, in __init__
+  File "http/server.py", line 138, in server_bind
+  File "socketserver.py", line 466, in server_bind
+OSError: [Errno 98] Address already in use
+[13077] Failed to execute script api

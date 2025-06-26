@@ -1,0 +1,9 @@
+
+=== Test started (2025-06-26 00:10:49) ===
+Starting structure test for the preprocessed file
+Loaded file: data/processed/sales_processed_20250626_0010.csv
+Timestamp column check: OK (not present)
+Integer type check: OK (all columns are integers)
+Test completed for the preprocessed file.
+=== Test ended ===
+
