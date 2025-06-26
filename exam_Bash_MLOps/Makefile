@@ -27,7 +27,7 @@ update-deps:
 # Start API
 api-start:
 	@echo "### 4. Starting API server"
-	@cd .. && ./api >> exam_Bash_MLOps/logs/api.log 2>&1 & echo $$! > api.pid
+	@cd .. && ./api >> exam_Bash_MLOps/logs/api.logs 2>&1 & echo $$! > api.pid
 
 # Pipeline steps
 collect:
